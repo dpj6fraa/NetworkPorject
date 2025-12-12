@@ -39,8 +39,7 @@ class DHTNode {
                         return res.json({
                             found: true,
                             value: r.data.value,
-                            holder: r.data.port || r.data.holder,
-                            via: p
+                            holder: r.data.port || r.data.holder
                         });
                     }
                 } catch (e) {
@@ -84,4 +83,5 @@ class DHTNode {
 }
 
 module.exports = DHTNode;
+
 
