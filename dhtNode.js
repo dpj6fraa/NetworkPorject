@@ -36,7 +36,12 @@ class DHTNode {
                 try {
                     const r = await axios.get(`${p}/find/${encodeURIComponent(key)}`, { timeout: 2000 });
                     if (r.data && r.data.found) {
-                        return res.json({ found: true, value: r.data.value, via: p });
+                        return res.json({
+                            found: true,
+                            value: r.data.value,
+                            holder: r.data.port || r.data.holder,
+                            via: p
+                        });
                     }
                 } catch (e) {
                     // peer failed — remove from routing table
@@ -79,3 +84,4 @@ class DHTNode {
 }
 
 module.exports = DHTNode;
+
